@@ -33,4 +33,10 @@ api.get('/images/:id', function (req, res, next) {
   });
 });
 
+api.delete('/images/:id', function (req, res, next) {
+  db('images').where({id: req.params.id}).del().then(function(result) {
+    res.json({'message': 'success'});
+  });
+});
+
 module.exports = api;
